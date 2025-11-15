@@ -1,7 +1,7 @@
 version: '3.5'
 services:
   web:
-    image: odoo:13.0
+    image: odoo:17
     depends_on:
       - db
     ports:
@@ -14,16 +14,15 @@ services:
     # command:
     #   odoo -r odoo -w odoo -i addons -d odoo
   db:
-    image: postgres:10.9
+    image: postgres:17
     # ports:
     #   - "5432:5432"
     environment:
       - POSTGRES_DB=postgres
       - POSTGRES_USER=odoo
       - POSTGRES_PASSWORD=odoo
-      - PGDATA=/var/lib/postgresql/data/pgdata
     volumes:
-      - odoo-db-data:/var/lib/postgresql/data/pgdata
+      - odoo-db-data:/var/lib/postgresql/data
 
 volumes:
   odoo-web-data:
